@@ -1,0 +1,11 @@
+---
+- hosts: test
+  connection: local
+  become: true
+  tasks:
+    - name: install maven and apache on your local Ubuntu machine
+      become: yes
+      apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
+      with_items:
+        - maven
+        - apache2

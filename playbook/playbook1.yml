@@ -1,0 +1,22 @@
+---
+ - name: copy
+   hosts: test
+   tasks:  
+     - name: copy the files
+       copy:
+         src: /root/{{ item }}
+         dest: /chenna/ 
+       with_items:
+         - file1
+         - file2
+         - file3
+         - file4 
+
+     - name: Copy files from slave to master
+       fetch:
+         src: /chenna/{{ item }}
+         dest: /root/
+       with_items:
+         - file5
+         - file6
+         - file7
